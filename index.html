@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Count Tally</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 30px;
+        }
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .vehicle-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px;
+        }
+        .main-button img {
+            width: 200px; /* Adjust size as needed */
+            height: 100px;
+            object-fit: cover;
+            border-radius: 10px;
+			border: none;
+			padding: 0;
+        }
+		.multiplier-button img {
+			width: 50px;
+			height: 50px;
+			object-fit: contain;
+            border-radius: 10px;
+			border: 1px solid #f39c12;
+			padding: 0;
+		}
+		.main-button,
+		.multiplier-button {
+			background: none;
+			border: none;
+			cursor: pointer;
+			padding: 0;
+			margin: 0;
+		}
+        .multiplier-buttons {
+            display: flex;
+            gap: 20px;
+            margin-top: 5px;
+        }
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 80%;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        @media screen and (max-width: 768px) {
+            .button-container {
+                flex-direction: column;
+            }
+            .main-button img,
+            .multiplier-button img {
+                width: 100px;
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Traffic Count Tally</h1>
+    <div class="button-container">
+        <!-- CARS, SUV, TAXI -->
+        <div class="vehicle-group">
+            <button class="main-button" onclick="recordClick('CARS, SUV, TAXI')">
+                <img src="1.png" alt="CARS, SUV, TAXI">
+            </button>
+            <div class="multiplier-buttons">
+                <button class="multiplier-button" onclick="recordMultipleClicks('CARS, SUV, TAXI', 5)">
+                    <img src="x5.png" alt="x5">
+                </button>
+                <button class="multiplier-button" onclick="recordMultipleClicks('CARS, SUV, TAXI', 10)">
+                    <img src="x10.png" alt="x10">
+                </button>
+                <button class="multiplier-button" onclick="recordMultipleClicks('CARS, SUV, TAXI', 100)">
+                    <img src="x100.png" alt="x100">
+                </button>
+            </div>
+        </div>
+        <!-- BUS -->
+        <div class="vehicle-group">
+            <button class="main-button" onclick="recordClick('BUS')">
+                <img src="2.png" alt="BUS">
+            </button>
+            <div class="multiplier-buttons">
+                <button class="multiplier-button" onclick="recordMultipleClicks('BUS', 5)">
+                    <img src="x5.png" alt="x5">
+                </button>
+                <button class="multiplier-button" onclick="recordMultipleClicks('BUS', 10)">
+                    <img src="x10.png" alt="x10">
+                </button>
+                <button class="multiplier-button" onclick="recordMultipleClicks('BUS', 100)">
+                    <img src="x100.png" alt="x100">
+                </button>
+            </div>
+        </div>
+        <!-- TRUCK -->
+		<div class="vehicle-group">
+            <button class="main-button" onclick="recordClick('TRUCK')">
+                <img src="3.png" alt="TRUCK">
+            </button>
+            <div class="multiplier-buttons">
+                <button class="multiplier-button" onclick="recordMultipleClicks('TRUCK', 5)">
+                    <img src="x5.png" alt="x5">
+                </button>
+                <button class="multiplier-button" onclick="recordMultipleClicks('TRUCK', 10)">
+                    <img src="x10.png" alt="x10">
+                </button>
+                <button class="multiplier-button" onclick="recordMultipleClicks('TRUCK', 100)">
+                    <img src="x100.png" alt="x100">
+                </button>
+            </div>		
+		</div>
+        <!-- Passenger Utility Vehicles -->
+		<div class="vehicle-group">
+            <button class="main-button" onclick="recordClick('Passenger Utility Vehicles')">
+                <img src="4.png" alt="Passenger Utility Vehicles">
+            </button>
+            <div class="multiplier-buttons">
+                <button class="multiplier-button" onclick="recordMultipleClicks('Passenger Utility Vehicles', 5)">
+                    <img src="x5.png" alt="x5">
+                </button>
+                <button class="multiplier-button" onclick="recordMultipleClicks('Passenger Utility Vehicles', 10)">
+                    <img src="x10.png" alt="x10">
+                </button>
+                <button class="multiplier-button" onclick="recordMultipleClicks('Passenger Utility Vehicles', 100)">
+                    <img src="x100.png" alt="x100">
+                </button>
+            </div>		
+		</div>
+		<!-- Motorcycle/Tricycle -->
+		<div class="vehicle-group">
+            <button class="main-button" onclick="recordClick('Motorcycle/Tricycle')">
+                <img src="5.png" alt="Motorcycle/Tricycle">
+            </button>
+            <div class="multiplier-buttons">
+                <button class="multiplier-button" onclick="recordMultipleClicks('Motorcycle/Tricycle', 5)">
+                    <img src="x5.png" alt="x5">
+                </button>
+                <button class="multiplier-button" onclick="recordMultipleClicks('Motorcycle/Tricycle', 10)">
+                    <img src="x10.png" alt="x10">
+                </button>
+                <button class="multiplier-button" onclick="recordMultipleClicks('Motorcycle/Tricycle', 100)">
+                    <img src="x100.png" alt="x100">
+                </button>
+            </div>		
+		</div>
+		<!-- Bicycle/Pedicab -->
+		<div class="vehicle-group">
+            <button class="main-button" onclick="recordClick('Bicycle/Pedicab')">
+                <img src="6.png" alt="Bicycle/Pedicab">
+            </button>
+            <div class="multiplier-buttons">
+                <button class="multiplier-button" onclick="recordMultipleClicks('Bicycle/Pedicab', 5)">
+                    <img src="x5.png" alt="x5">
+                </button>
+                <button class="multiplier-button" onclick="recordMultipleClicks('Bicycle/Pedicab', 10)">
+                    <img src="x10.png" alt="x10">
+                </button>
+                <button class="multiplier-button" onclick="recordMultipleClicks('Bicycle/Pedicab', 100)">
+                    <img src="x100.png" alt="x100">
+                </button>
+            </div>		
+		</div>
+    </div>
+    <table id="logTable">
+        <tr>
+            <th>DIVISION</th>
+            <th>Click Count</th>
+        </tr>
+        <tr id="CARS, SUV, TAXI">
+            <td>CARS, SUV, TAXI</td>
+            <td>0</td>
+        </tr>
+        <tr id="BUS">
+            <td>BUS</td>
+            <td>0</td>
+        </tr>
+        <tr id="TRUCK">
+            <td>TRUCK</td>
+            <td>0</td>
+        </tr>
+        <tr id="Passenger Utility Vehicles">
+            <td>Passenger Utility Vehicles</td>
+            <td>0</td>
+        </tr>
+        <tr id="Motorcycle/Tricycle">
+            <td>Motorcycle/Tricycle</td>
+            <td>0</td>
+        </tr>
+        <tr id="Bicycle/Pedicab">
+            <td>Bicycle/Pedicab</td>
+            <td>0</td>
+        </tr>
+    </table>
+
+    <script>
+        // Store click counts in an object
+        const clickCounts = {
+            "CARS, SUV, TAXI": 0,
+            "BUS": 0,
+            "TRUCK": 0,
+            "Passenger Utility Vehicles": 0,
+            "Motorcycle/Tricycle": 0,
+            "Bicycle/Pedicab": 0,
+        };
+
+        function recordClick(buttonName) {
+            // Increment the count
+            clickCounts[buttonName]++;
+            updateTable(buttonName);
+        }
+
+        function recordMultipleClicks(buttonName, multiplier) {
+            // Increment the count by the multiplier
+            clickCounts[buttonName] += multiplier;
+            updateTable(buttonName);
+        }
+
+        function updateTable(buttonName) {
+            // Update the corresponding table cell
+            const row = document.getElementById(buttonName);
+            row.cells[1].textContent = clickCounts[buttonName];
+        }
+
+        // Warn user before reloading the page
+        window.addEventListener("beforeunload", (event) => {
+            event.preventDefault();
+            event.returnValue = ''; // Trigger confirmation dialog
+        });
+    </script>
+</body>
+</html>
